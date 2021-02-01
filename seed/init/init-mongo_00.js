@@ -1,7 +1,7 @@
 db = db.getSiblingDB('service_now');
 db.createUser({
     user: "incidentUser",
-    pwd: "2020*Secret",
+    pwd: "redhat",
     roles: [
         {
             role: "readWrite",
