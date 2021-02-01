@@ -25,7 +25,7 @@ services:
         ports:
             - '5000:5000'
         environment:
-            MONGODB_HOST: 'database'
+            MONGODB_HOST: 'mongodb'
             MONGODB_DB: 'service_now'
             MONGODB_USERNAME: 'incidentUser'
             MONGODB_PASSWORD: 'redhat'
