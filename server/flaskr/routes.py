@@ -20,7 +20,7 @@ app = Flask(__name__)
 
 
 app.config['MONGO_DBNAME'] = 'service_now'
-app.config['MONGO_URI'] = 'mongodb://127.0.0.1:27017/service_now'
+app.config['MONGO_URI'] = 'mongodb://incidentUser:redhat@mongodb/service_now'
 
 if 'MONGODB_HOST' in os.environ:
     app.config['MONGO_URI'] =  'mongodb://' + os.environ['MONGODB_USERNAME'] + ':' + os.environ['MONGODB_PASSWORD'] + '@' + os.environ['MONGODB_HOST'] + '/service_now'
