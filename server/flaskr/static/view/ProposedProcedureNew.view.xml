@@ -1,0 +1,45 @@
+<mvc:View 
+    controllerName="ui.kolki.controller.ProposedProcedureNew"
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    xmlns:table="sap.ui.table" 
+    xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:semantic="sap.f.semantic" 
+    xmlns:f="sap.ui.layout.form" 
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<semantic:SemanticPage id="ProposedProcedureNew" headerPinnable="false" toggleHeaderOnTitleClick="true" preserveHeaderStateOnScroll="false"
+		headerExpanded="false" titleAreaShrinkRatio="1:1.6:1.6" showFooter="true">
+		<!-- Title Heading-->
+		<semantic:titleHeading>
+			<Title text="{i18n>ProposedProcedureNewTitle}"/>
+		</semantic:titleHeading>
+		<!-- Header Content -->
+		<semantic:headerContent></semantic:headerContent>
+		<!-- Content -->
+		<semantic:content>
+			<Panel class="sapUiContentPadding">
+				<f:SimpleForm id="formProposedProcedureNew" editable="true" layout="ResponsiveGridLayout" title="" labelSpanXL="3"
+					labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
+					columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+					<f:content>
+						<Label text="{i18n>l3_category}" required="true"/>
+                        <Input value="{/ProposedProcedureNew/l3}" maxLength="50"></Input>
+						<Label text="{i18n>resolution}" required="true"/>
+						<TextArea 
+							value="{/ProposedProcedureNew/solution}" growing="true" width="100%" rows="3" growingMaxLines="8"/>
+						<Label text="{i18n>active}" required="false"/>
+						<CheckBox selected="{/ProposedProcedureNew/active}"/>
+					</f:content>
+				</f:SimpleForm>
+			</Panel>
+		</semantic:content>
+		<!-- Semantic Footer Buttons -->
+		<semantic:footerMainAction>
+			<semantic:FooterMainAction id="btnSave" text="{i18n>btnSave}" press="onSave"/>
+		</semantic:footerMainAction>
+		<semantic:footerCustomActions>
+			<Button id="btnDiscard" text="{i18n>btnDiscard}" press="onDiscard"/>
+		</semantic:footerCustomActions>
+	</semantic:SemanticPage>
+</mvc:View>

@@ -1,0 +1,220 @@
+<mvc:View
+ 	controllerName="ui.kolki.controller.Incident"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:t="sap.ui.table"
+	xmlns:core="sap.ui.core"		
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns="sap.m">
+	<Page
+		title="{i18n>IncidentTitle}"
+		class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer"
+		showNavButton="true" navButtonPress="onNavBack">
+		<content>
+				<IconTabBar
+				id="idIconTabBarNoIcons"
+				expanded="true"
+				class="sapUiResponsiveContentPadding">
+					<items>
+					<IconTabFilter 
+					text="{i18n>IncidentView}" 
+					key="info"
+					icon="sap-icon://detail-view">
+						
+						<f:Form id="FormDisplay354wideDual"
+							editable="false">
+							<f:title>
+								<core:Title text="{i18n>IncidentMetadata}" />
+							</f:title>
+							<f:layout>
+								<f:ResponsiveGridLayout
+									labelSpanXL="4"
+									labelSpanL="3"
+									labelSpanM="4"
+									labelSpanS="12"
+									adjustLabelSpan="false"
+									emptySpanXL="0"
+									emptySpanL="4"
+									emptySpanM="0"
+									emptySpanS="0"
+									columnsXL="2"
+									columnsL="1"
+									singleContainerFullSize="false" />
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement label="{i18n>IncidentsNumber}">
+											<f:fields>
+												<Link href="{/Incident/incident_url}" target="_blank" text="{/Incident/number}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>IncidentGroup}">
+											<f:fields>
+												<Text text="{/Incident/assignment_group_text}" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>IncidentsShort}">
+											<f:fields>
+												<Text text="{/Incident/short_description}" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>IncidentsLong}">
+											<f:fields>
+												<Text text="{/Incident/description}" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>IncidentsCloseCode}">
+											<f:fields>
+												<Text text="{/Incident/close_code}" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>IncidentClose}">
+											<f:fields>
+												<Text text="{/Incident/close_notes}" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>l1_category}">
+											<f:fields>
+												<Text text="{/Incident/feature}" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>l2_category}">
+											<f:fields>
+												<Text text="{/Incident/feature_set}" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>l3_category}">
+											<f:fields>
+												<Text text="{/Incident/l3}" />
+											</f:fields>
+										</f:FormElement>																														
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					
+					</IconTabFilter>
+					<IconTabFilter text="{i18n>IncidentPrediction}" key="prediction" icon="sap-icon://activate">
+							<t:Table
+								id="PredictionList"
+								selectionMode="None"
+								rowActionCount="2"
+								rows="{/Predictions}"
+								visibleRowCount="7"
+								enableCellFilter="true">
+								<t:rowActionTemplate>
+									<t:RowAction>
+										<t:RowActionItem 
+											icon="sap-icon://decline"
+											tooltip="{sap-icon://thumb-down}"
+											type="Custom"
+											app:feedback="false"
+											press="onActionFeedback"/>
+										<t:RowActionItem 
+											icon="sap-icon://accept"
+											tooltip="{sap-icon://thumb-up}"
+											type="Custom"
+											app:feedback="true"
+											press="onActionFeedback"/>								
+									</t:RowAction>
+								</t:rowActionTemplate>
+								<t:extension>
+									<OverflowToolbar>
+										<Title id="title" text="{i18n>IncidentPredictionList}" />
+										<ToolbarSpacer/>
+										<Button
+											icon="sap-icon://combine"
+											tooltip="{i18n>PredictionsCalculate}"
+											text="{i18n>PredictionsCalculateTxt}"
+											press="onCalculatePrediction"/>
+										<Button
+											icon="sap-icon://paper-plane"
+											tooltip="{i18n>PredictionSend}"
+											text="{i18n>PredictionSendTxt}"
+											press="onSendPrediction"/>
+										<ToolbarSeparator />
+										<Button
+											icon="sap-icon://delete"
+											tooltip="{i18n>PredictionReset}"
+											type="Reject"
+											press="onDeletePrediction"/>		
+									</OverflowToolbar>
+								</t:extension>
+								<t:columns>
+									<t:Column
+										width="15%">
+										<Label text="{i18n>PredictionDate}" />
+										<t:template>
+											<Text text="{date}" wrapping="false" />
+										</t:template>
+									</t:Column>
+									<t:Column
+										width="15%"
+										filterProperty="l1_category">
+										<Label text="{i18n>l1_category}" />
+										<t:template>
+											<Text text="{l1_category}" wrapping="false" />
+										</t:template>
+									</t:Column>
+									<t:Column
+										width="15%"
+										filterProperty="l2_category">
+										<Label text="{i18n>l2_category}" />
+										<t:template>
+											<Text text="{l2_category}" wrapping="false" />
+										</t:template>
+									</t:Column>
+									<t:Column
+										width="15%"
+										filterProperty="l3_category">
+										<Label text="{i18n>l3_category}" />
+										<t:template>
+											<Text text="{l3_category}" wrapping="false" />
+										</t:template>
+									</t:Column>																											
+									<t:Column
+										width="40%">
+										<Label text="{i18n>resolution}" />
+										<t:template>
+											<Text text="{resolution}" wrapping="true" />
+										</t:template>
+									</t:Column>
+									<t:Column
+										width="15%">
+										<Label text="{i18n>PredictionFeedback}" />
+										<t:template>
+											<ObjectStatus text="{
+												path: 'feedback',
+												formatter: '.formatter.feedbackText'
+												}" 
+												icon="{
+												path: 'feedback',
+												formatter: '.formatter.feedbackIcon'
+												}"
+												state="{
+												path: 'feedback',
+												formatter: '.formatter.feedbackState'
+												}"
+												/>
+										</t:template>
+									</t:Column>
+									<t:Column
+										width="15%">
+										<Label text="{i18n>PredictionFeedbackDate}" />
+										<t:template>
+											<Text text="{feedback_date}" wrapping="false" />
+										</t:template>
+									</t:Column>
+								</t:columns>				
+							</t:Table>
+					</IconTabFilter>
+					</items>
+				</IconTabBar>	
+		</content>
+		<footer>
+
+		</footer>
+	</Page>
+</mvc:View>

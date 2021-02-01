@@ -1,0 +1,6 @@
+httpx==0.15.5
+Flask==1.1.2
+Flask-PyMongo==2.3.0
+selenium==3.141.0
+gunicorn==20.0.4
+pyvirtualdisplay

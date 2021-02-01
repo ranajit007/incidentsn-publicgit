@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "5f5ed0972e1dbc2a2c800507"
+  },
+  "key": "selenium_config",
+  "user_id": "jorge.bustillos@nestle.com",
+  "user_pass": "2020*September*2020",
+  "show_browser": true,
+  "last_update": {
+    "$date": "2020-10-06T08:30:35.593Z"
+  },
+  "type": null,
+  "active": true,
+  "proposed_precedure": null,
+  "order": null
+},{
+  "_id": {
+    "$oid": "5f6f9584c00a9a2874396b21"
+  },
+  "key": "l1_category",
+  "type": "predictions_config",
+  "active": true,
+  "order": 1
+},{
+  "_id": {
+    "$oid": "5f6f9584c00a9a2874396b22"
+  },
+  "key": "l2_category",
+  "type": "predictions_config",
+  "active": true,
+  "order": 2
+},{
+  "_id": {
+    "$oid": "5f6f9584c00a9a2874396b23"
+  },
+  "key": "l3_category",
+  "type": "predictions_config",
+  "active": true,
+  "order": 3
+},{
+  "_id": {
+    "$oid": "5f6f9584c00a9a2874396b24"
+  },
+  "key": "resolution",
+  "type": "predictions_config",
+  "active": true,
+  "proposed_precedure": true,
+  "order": 4
+}]

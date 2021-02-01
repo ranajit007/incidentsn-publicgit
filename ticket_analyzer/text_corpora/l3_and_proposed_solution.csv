@@ -1,0 +1,20 @@
+﻿l3,solution
+TU incorrect Status,Run the report /SCWM/SR_INCONSISTENCY with TU <<TU Number>> and all the check box checked. If still issue persist and TU is planned status but TU is already checked in then update the actual start time in /SCWM/TU_SR_ACT table for the internal TU.
+Bin inconsistency,Run the report ZRECALCULATE_CAPA
+Shipment Status updated missing,"Re-trigger the ""Send Shipment IDOC"" PPF of the TU in /SCWM/TU transaction, it should the shipment status in ECC, if not then update the shipment status date and time same as EWM"
+GR Missing in ECC,"Proceedure for NUSA
+1. Find the missing material document for 101 movement from MCCNN2 table, 2. Do the GR of Z999 in MIGO to discrepancy location 3. upload the stock to main location using movement type ZC6
+Proceedure for NPPC / NWNA
+1. Find the missing material document for 101 movement from MCCNN2 table 2. communicate to SUN team"
+Appointment inconsistency,"Coordinate with site to delete the appointment and take a new appointment for the same. In case of duplicate, delete the appointment from the table /GLB/KGTT_LOADSC"
+Queue failed in ECC for stock deficit,"1. Find missing stock in ECC using the product and batch
+2. find the queue to upload or GR that stock if not found check in MCCNN2 table any discrepancy there
+3. if a queue found then process that queue 
+4. in case of discrepancy, please resolve the discrepancy by uploading the stock (NUSA) or inform SUN team (NPPC/NUSA)"
+Queue failed in ECC - Other reason,1. Go to SMQ2 to find the queue and process the queue
+Posting issue in ECC,"1. Add the parameter id DLV_POSTING_DATE and add the posting date as the same from EWM 
+2. Go to SMQ2 and debug the queue to process"
+Missing Pallet posting Missing,"1. go the the table /NESGLB/MCCNN2 for that PO, material 2. identify the record where discrepancy material document not posted. 3. Move the stock using 344 in MIGO 4. Block the queue for outbound delivery 4. Post the PGI for the outbound delivery directly in ECC"
+Delivery Over Loaded,Find the additional task in the document flow in /SCWM/PRDI transaction and then remove the entry from the document flow table /SCDL/DB_DF
+Failed to check-out in EWM YM,Run the report /SCWM/SR_INCONSISTENCY with TU <<TU Number>> and all the check box checked. 
+Confirmation Tab Not Updated,"1. Find the DESADV inbound IDOC in ECC for that PO , 2. if not processed, re-processed the IDOC in ZCMCL, 3. if processed successfully, still confirmation table not updated, then check queue (ZBGTSK*) in SMQ2 for that PO, 4. if found, process the queue, if not found, manually update the confirmation tab for that PO in ME22N"

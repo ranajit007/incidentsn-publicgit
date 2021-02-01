@@ -1,0 +1,8 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<BusyDialog
+		title="Loading Data"
+		text="{i18n>incident_update}"
+		showCancelButton="false"/>
+</core:FragmentDefinition>

@@ -1,0 +1,124 @@
+{
+	"_version": "1.12.1",
+	"sap.app": {
+		"id": "ui.kolki",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"MainModel": {
+				"uri": "model/MainModel.json",
+				"type": "JSON"
+			}
+		}
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "ui.kolki.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.60.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "ui.kolki.i18n.i18n"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "MainModel"
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "ui.kolki.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "home",
+					"target": "home"
+				},
+				{
+					"pattern": "incident/{number}",
+					"name": "incident",
+					"target": "incident"
+				},
+				{
+					"pattern": "ProposedProcedure",
+					"name": "ProposedProcedure",
+					"target": "ProposedProcedure"
+				},
+				{
+					"pattern": "ProposedProcedureNew",
+					"name": "ProposedProcedureNew",
+					"target": "ProposedProcedureNew"
+				}
+			],
+			"targets": {				
+				"home": {
+					"viewName": "Home",
+					"viewId": "home",
+					"viewLevel": 1,
+					"title": "{i18n>title}"
+				},
+				"incident": {
+					"viewName": "Incident",
+					"viewId": "incident",
+					"viewLevel": 2,
+					"title": "{i18n>IncidentTitle}"
+				},
+				"ProposedProcedure":{
+					"viewName": "ProposedProcedure",
+					"viewId": "ProposedProcedure",
+					"viewLevel": 2,
+					"title": "{i18n>ProposedProcedureTitle}"					
+				},
+				"ProposedProcedureNew":{
+					"viewName": "ProposedProcedureNew",
+					"viewId": "ProposedProcedureNew",
+					"viewLevel": 2,
+					"title": "{i18n>ProposedProcedureNewTitle}"					
+				}
+			}
+		}
+	}
+}

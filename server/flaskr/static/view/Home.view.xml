@@ -1,0 +1,161 @@
+<mvc:View controllerName="ui.kolki.controller.Home"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns="sap.m"
+		xmlns:t="sap.ui.table"
+		xmlns:f="sap.f"
+		xmlns:l="sap.ui.layout"
+		xmlns:core="sap.ui.core"
+		height="100%">
+	<f:DynamicPage id="HomePage" headerExpanded="true" toggleHeaderOnTitleClick="false">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="{i18n>HeadingTitle}"/>
+					</f:heading>
+					<f:expandedContent>
+						<Label text="{i18n>HeadingSubTitle}"/>
+					</f:expandedContent>
+					<f:snappedContent>
+						<Label text="{i18n>HeadingSubTitle}"/>
+					</f:snappedContent>
+					<f:snappedTitleOnMobile>
+						<Title text="{i18n>HeadingTitle}"/>
+					</f:snappedTitleOnMobile>
+			
+					<f:actions>
+						<Button
+							id="updateBtn"
+							icon="sap-icon://refresh"
+							tooltip="{i18n>UpdateText}"
+							type="Emphasized"
+							press="onUpdate"/>	
+						<Button
+							id="maintenanceBtn"
+							icon="sap-icon://developer-settings"
+							tooltip="{i18n>PredictionTooltip}"
+							text="{i18n>PredictionMaintenance}"
+							type="Default"
+							press="onProposedProcedure"/>	
+					</f:actions>				
+				</f:DynamicPageTitle>
+			</f:title>
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+					<l:HorizontalLayout allowWrapping="true">
+						<l:VerticalLayout class="sapUiMediumMarginEnd">
+							<ObjectAttribute id="ConfigUpdate" title="{i18n>ConfigUpdate}"/>
+							<ObjectAttribute id="ConfigUser" title="{i18n>ConfigUser}"/>
+							<MultiComboBox
+								id="oMCBSelection"
+								selectionChange="onSelectionChangeMCBSelection"
+								width="600px"
+								items="{
+									path: '/Groups'
+								}">
+								<core:Item key="{key}" text="{key}"/>
+							</MultiComboBox>
+						</l:VerticalLayout>
+					</l:HorizontalLayout>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				<l:VerticalLayout class="sapUiNoContentPadding">
+					<IconTabBar
+						id="IconTabBarPending"
+						select="onFilterSelect"
+						class="sapUiNoContentPadding">
+						<items>
+						<IconTabFilter 
+							text="{i18n>IconTabBarPending}" 
+							count="{/PendingCount}"
+							key="pending"
+							icon="sap-icon://lateness" />
+						<IconTabFilter 
+							text="{i18n>IconTabBarClosed}" 
+							count="{/ClosedCount}"
+							key="closed" 
+							icon="sap-icon://complete" />			
+						</items>
+						<content>
+						<t:Table
+							id="IncidentsTable"
+							selectionMode="None"
+							rowActionCount="1"
+							rows="{/Incidents}"
+							visibleRowCount="7"
+							enableCellFilter="true">
+							<t:rowActionTemplate>
+								<t:RowAction>
+									<t:RowActionItem 
+										type="Navigation"
+										press="onPressTable"/>
+								</t:RowAction>
+							</t:rowActionTemplate>
+							<t:extension>
+								<OverflowToolbar>
+									<Title id="title" text="{i18n>Incidents}" />
+									<ToolbarSpacer/>
+								</OverflowToolbar>
+							</t:extension>
+							<t:columns>
+								<t:Column
+									filterProperty="number">
+									<Label text="{i18n>IncidentsNumber}" />
+									<t:template>
+										<Text text="{number}" wrapping="false" />
+									</t:template>
+								</t:Column>
+								<t:Column
+									filterProperty="assignment_group_text">
+									<Label text="{i18n>IncidentGroup}" />
+									<t:template>
+										<Text text="{assignment_group_text}" wrapping="false" />
+									</t:template>
+								</t:Column>
+								<t:Column
+									filterProperty="category_incident">
+									<Label text="{i18n>IncidentsCategory}" />
+									<t:template>
+										<Text text="{category_incident}" wrapping="false" />
+									</t:template>
+								</t:Column>
+								<t:Column
+									width="30%"
+									filterProperty="short_description">
+									<Label text="{i18n>IncidentsShort}" />
+									<t:template>
+										<Text text="{short_description}" wrapping="false" />
+									</t:template>
+								</t:Column>
+								<t:Column
+									filterProperty="close_code">
+									<Label text="{i18n>IncidentsCloseCode}" />
+									<t:template>
+										<Text text="{close_code}" wrapping="false" />
+									</t:template>
+								</t:Column>
+								<t:Column
+									filterProperty="opened_at">
+									<Label text="{i18n>IncidentsOpen}" />
+									<t:template>
+										<Text text="{opened_at}" wrapping="false" />
+									</t:template>
+								</t:Column>
+								<t:Column
+									filterProperty="predictions">
+									<Label text="{i18n>IncidentsPredictionsNum}" />
+									<t:template>
+										<Text text="{predictions}" wrapping="false" />
+									</t:template>
+								</t:Column>
+							</t:columns>				
+						</t:Table>
+						</content>
+					</IconTabBar>
+					
+				</l:VerticalLayout>
+			</f:content>
+		</f:DynamicPage>
+</mvc:View>

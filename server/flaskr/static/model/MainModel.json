@@ -1,0 +1,30 @@
+{
+	"Incidents": [],
+        "Incident": {},
+        "Predictions": [],
+        "ProposedProcedure": [],
+        "ProposedProcedureDelete": [],
+        "ProposedProcedureUpdate": [],
+        "ProposedProcedureNew": {
+                "l3": "",
+                "solution": "",
+                "active": true
+        },
+        "PendingCount": 0,
+        "SolvedCount": 0,
+        "Groups": [
+                {"key": "BS_SC EWM_NAR_IBM"},
+                {"key": "BS_SC WH_IBM"},
+                {"key": "BS_SC MH_EUR_TECHM"},
+                {"key": "CH_ES MH TECHM"},
+                {"key": "BS_SC MH_NAR_TECHM_L1"},
+                {"key": "BS_SC MH_LAR_TECHM"},
+                {"key": "BS_SC MH_NAR_TECHM"},
+                {"key": "BS_SC MH_AOA_TECHM"},
+                {"key": "TR_ES MH_TECHM"},
+                {"key": "MAR_ES MH_TECHM"},
+                {"key": "ND_ES MH_TECHM"},
+                {"key": "BS_SC MH_LAR_TECHM_L1"},
+                {"key": "BS_SC CA PLOG_TECHM"}
+        ]
+}

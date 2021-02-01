@@ -1,0 +1,64 @@
+<mvc:View 
+    controllerName="ui.kolki.controller.ProposedProcedure"
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    xmlns:table="sap.ui.table" 
+    xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:semantic="sap.f.semantic"     
+    xmlns:html="http://www.w3.org/1999/xhtml">
+	<semantic:SemanticPage id="ProposedProcedure" headerPinnable="false" toggleHeaderOnTitleClick="true" preserveHeaderStateOnScroll="false"
+		headerExpanded="true" titleAreaShrinkRatio="1:1.6:1.6" showFooter="true">
+		<!-- Title Heading-->
+		<semantic:titleHeading>
+			<Title text="{i18n>ProposedProcedureTitle}"/>
+		</semantic:titleHeading>
+		<!-- Header Content -->
+		<semantic:headerContent>
+			
+		</semantic:headerContent>
+		<!-- Content -->
+		<semantic:content>
+			<table:Table visibleRowCountMode="Fixed" visibleRowCount="5" id="ProposedProcedureTable"
+				rows="{ path: '/ProposedProcedure' }"
+				selectionMode="MultiToggle" ariaLabelledBy="title">
+				<table:extension>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://delete" tooltip="{i18n>btnDel}" id="btnDel" press="onDelRecord"/>
+						<Button icon="sap-icon://add" tooltip="{i18n>btnAdd}" id="btnAdd" press="onNewRecord"/>
+					</OverflowToolbar>
+				</table:extension>
+				<table:columns>
+					<table:Column sortProperty="l3" filterProperty="l3">
+						<Label text="{i18n>l3_category}" tooltip="{i18n>l3_category}"/>
+						<table:template>
+							<Text text="{l3}" wrapping="false"/>
+						</table:template>
+					</table:Column>
+					<table:Column sortProperty="solution" filterProperty="resolution" width="50%">
+						<Label text="{i18n>resolution}" tooltip="{i18n>resolution}"/>
+						<table:template>
+							<TextArea 
+							change="onChangeText"
+							value="{solution}" growing="true" width="100%" rows="3" growingMaxLines="3"/>
+						</table:template>
+					</table:Column>
+					<table:Column sortProperty="active" filterProperty="active">
+						<Label text="{i18n>active}" tooltip="{i18n>active}"/>
+						<table:template>
+							<CheckBox select="onSelect" selected="{active}"/>
+						</table:template>
+					</table:Column>
+				</table:columns>
+			</table:Table>
+		</semantic:content>
+		<!-- Semantic Footer Buttons -->
+		<semantic:footerMainAction>
+			<semantic:FooterMainAction id="saveAction" text="{i18n>btnSave}" press="onSave"/>
+		</semantic:footerMainAction>
+		<semantic:footerCustomActions>
+			<Button id="cancelAction" text="{i18n>btnDiscard}" press="onDiscard"/>
+		</semantic:footerCustomActions>
+	</semantic:SemanticPage>
+</mvc:View>

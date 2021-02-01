@@ -1,0 +1,47 @@
+version: "3.7"
+
+services:               
+    database:      
+        container_name: 'incidentsn_mongo'
+        build: 
+            context: ./seed
+            dockerfile: Dockerfile          
+        environment: 
+            MONGO_INITDB_DATABASE: 'service_now'
+            MONGO_INITDB_ROOT_USERNAME: 'root'
+            MONGO_INITDB_ROOT_PASSWORD: '2020*SecretRoot'
+        volumes:
+            - mongo-volume:/data/db            
+        ports:
+            - '27017:27017'
+        networks:
+            - incidentsn_network
+        command: --quiet
+    server:
+        container_name: 'incidetnsn_python'
+        build: 
+            context: ./
+            dockerfile: Dockerfile
+        ports:
+            - '5000:5000'
+        environment:
+            MONGODB_HOST: 'database'
+            MONGODB_DB: 'service_now'
+            MONGODB_USERNAME: 'incidentUser'
+            MONGODB_PASSWORD: '2020*Secret'
+        volumes:
+            - ./models:/app/models:rw
+        depends_on: 
+            - database
+        networks:
+            - incidentsn_network      
+        stdin_open: true 
+        tty: true      
+               
+volumes:
+    mongo-volume:
+    appdata:
+        
+networks:
+    incidentsn_network:
+        driver: bridge        
