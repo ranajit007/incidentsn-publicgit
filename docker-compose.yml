@@ -8,8 +8,8 @@ services:
             dockerfile: Dockerfile          
         environment: 
             MONGO_INITDB_DATABASE: 'service_now'
-            MONGO_INITDB_ROOT_USERNAME: 'root'
-            MONGO_INITDB_ROOT_PASSWORD: '2020*SecretRoot'
+            MONGO_INITDB_ROOT_USERNAME: 'incidentUser'
+            MONGO_INITDB_ROOT_PASSWORD: 'redhat'
         volumes:
             - mongo-volume:/data/db            
         ports:
@@ -28,7 +28,7 @@ services:
             MONGODB_HOST: 'database'
             MONGODB_DB: 'service_now'
             MONGODB_USERNAME: 'incidentUser'
-            MONGODB_PASSWORD: '2020*Secret'
+            MONGODB_PASSWORD: 'redhat'
         volumes:
             - ./models:/app/models:rw
         depends_on: 
