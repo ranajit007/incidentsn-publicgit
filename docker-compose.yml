@@ -1,22 +1,7 @@
 version: "3.7"
 
 services:               
-    database:      
-        container_name: 'incidentsn_mongo'
-        build: 
-            context: ./seed
-            dockerfile: Dockerfile          
-        environment: 
-            MONGO_INITDB_DATABASE: 'service_now'
-            MONGO_INITDB_ROOT_USERNAME: 'incidentUser'
-            MONGO_INITDB_ROOT_PASSWORD: 'redhat'
-        volumes:
-            - mongo-volume:/data/db            
-        ports:
-            - '27017:27017'
-        networks:
-            - incidentsn_network
-        command: --quiet
+    
     server:
         container_name: 'incidetnsn_python'
         build: 
